@@ -1,12 +1,11 @@
 package com.gmall.user.controller;
 
-import com.gmall.user.bean.UmsMember;
-import com.gmall.user.service.MemberService;
+import com.gmall.api.bean.UmsMember;
+import com.gmall.api.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 @Controller
