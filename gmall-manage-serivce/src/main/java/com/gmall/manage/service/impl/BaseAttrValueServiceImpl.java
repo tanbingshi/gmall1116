@@ -2,6 +2,7 @@ package com.gmall.manage.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.gmall.api.bean.PmsBaseAttrValue;
+import com.gmall.api.bean.PmsProductSaleAttr;
 import com.gmall.api.service.BaseAttrValueService;
 import com.gmall.manage.mapper.PmsBaseAttrValueMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,4 +21,5 @@ public class BaseAttrValueServiceImpl implements BaseAttrValueService {
         pmsBaseAttrValue.setAttrId(attrId);
         return pmsBaseAttrValueMapper.select(pmsBaseAttrValue);
     }
+
 }

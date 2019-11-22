@@ -2,9 +2,13 @@ package com.gmall.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.gmall.api.bean.PmsBaseSaleAttr;
+import com.gmall.api.bean.PmsProductImage;
 import com.gmall.api.bean.PmsProductInfo;
+import com.gmall.api.bean.PmsProductSaleAttr;
 import com.gmall.api.service.BaseSaleAttrService;
+import com.gmall.api.service.ProductImageService;
 import com.gmall.api.service.ProductInfoService;
+import com.gmall.api.service.ProductSaleAttrService;
 import com.gmall.manage.utils.PmsUploadUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +25,12 @@ public class SpuController {
 
     @Reference
     BaseSaleAttrService baseSaleAttrService;
+
+    @Reference
+    ProductSaleAttrService productSaleAttrService;
+
+    @Reference
+    ProductImageService productImageService;
 
     @RequestMapping("spuList")
     @ResponseBody
@@ -48,6 +58,18 @@ public class SpuController {
     public String saveSpuInfo(@RequestBody PmsProductInfo pmsProductInfo){
         productInfoService.saveSpuInfo(pmsProductInfo);
         return "success";
+    }
+
+    @ResponseBody
+    @RequestMapping("spuSaleAttrList")
+    public List<PmsProductSaleAttr> spuSaleAttrList(String spuId){
+        return productSaleAttrService.spuSaleAttrList(spuId);
+    }
+
+    @ResponseBody
+    @RequestMapping("spuImageList")
+    public List<PmsProductImage> spuImageList(String spuId){
+        return productImageService.spuImageList(spuId);
     }
 
 }

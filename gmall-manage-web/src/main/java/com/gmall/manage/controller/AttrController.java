@@ -3,6 +3,7 @@ package com.gmall.manage.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.gmall.api.bean.PmsBaseAttrInfo;
 import com.gmall.api.bean.PmsBaseAttrValue;
+import com.gmall.api.bean.PmsProductSaleAttr;
 import com.gmall.api.service.BaseAttrInfoService;
 import com.gmall.api.service.BaseAttrValueService;
 import org.springframework.stereotype.Controller;
@@ -45,5 +46,6 @@ public class AttrController {
     public List<PmsBaseAttrValue> getAttrValueList(String attrId){
         return baseAttrValueService.getAttrValueList(attrId);
     }
+
 
 }
