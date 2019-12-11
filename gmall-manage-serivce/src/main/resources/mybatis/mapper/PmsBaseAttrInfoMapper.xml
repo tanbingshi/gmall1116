@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmall.manage.mapper.PmsBaseAttrInfoMapper">
+    <select resultMap="selectAttrValueListByValueIdMap"
+            id="selectAttrValueListByValueId">
+       SELECT
+            pbai.id AS pbai_id,
+            pbai.attr_name AS pbai_attr_name,
+            pbai.catalog3_id AS pbai_catalog3_id,
+            pbai.is_enabled AS pbai_is_enabled,
+            pbav.id AS pbav_id,
+            pbav.value_name AS pbav_value_name,
+            pbav.attr_id AS pbav_attr_id,
+            pbav.is_enabled AS pbav_is_enabled
+        FROM
+            pms_base_attr_info pbai,
+            pms_base_attr_value pbav
+        WHERE
+            pbai.id = pbav.attr_id
+        AND pbav.id IN (${valueIdStr})
+</select>
+
+
+    <resultMap id="selectAttrValueListByValueIdMap" type="com.gmall.api.bean.PmsBaseAttrInfo">
+
+        <id property="id" column="pbai_id"/>
+        <result column="pbai_attr_name" property="attrName"></result>
+        <result column="pbai_catalog3_id" property="catalog3Id"></result>
+        <result column="pbai_is_enabled" property="isEnabled"></result>
+        <collection property="attrValueList" ofType="com.gmall.api.bean.PmsBaseAttrValue">
+
+            <id property="id" column="pbav_id"/>
+            <result column="pbav_value_name" property="valueName"></result>
+            <result column="pbav_attr_id" property="attrId"></result>
+            <result column="pbav_is_enabled" property="isEnabled" ></result>
+        </collection>
+
+    </resultMap>
+</mapper>

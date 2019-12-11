@@ -27,7 +27,7 @@ public class PmsSkuInfo implements Serializable {
     String spuId;
 
     @Column
-    BigDecimal price;
+        BigDecimal price;
 
     @Column
     String skuName;

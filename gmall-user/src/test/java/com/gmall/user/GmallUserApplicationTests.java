@@ -1,6 +1,5 @@
 package com.gmall.user;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,7 +13,7 @@ class GmallUserApplicationTests {
     @Autowired
     DataSource dataSource;
 
-    @Test
+
     void contextLoads() throws SQLException {
 
         Connection connection = dataSource.getConnection();

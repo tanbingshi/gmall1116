@@ -6,12 +6,14 @@ import com.gmall.api.bean.PmsBaseAttrValue;
 import com.gmall.api.service.BaseAttrInfoService;
 import com.gmall.manage.mapper.PmsBaseAttrInfoMapper;
 import com.gmall.manage.mapper.PmsBaseAttrValueMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BaseAttrInfoServiceImpl implements BaseAttrInfoService {
@@ -67,4 +69,13 @@ public class BaseAttrInfoServiceImpl implements BaseAttrInfoService {
                 pmsBaseAttrValueMapper.insertBatch(attrValueList,attrId);
             }
     }
+
+    @Override
+    public List<PmsBaseAttrInfo> getBaseAttrInfoWithBaseAttrValue(Set<String> valueIdSet) {
+
+        String valueIdStr = StringUtils.join(valueIdSet, ",");
+        return pmsBaseAttrInfoMapper.selectAttrValueListByValueId(valueIdStr);
+    }
+
+
 }
